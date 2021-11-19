@@ -65,6 +65,26 @@ module Enumerable
         end
     end
 
+    def my_count
+        if block_given?
+            count = 0
+            self.my_each {|element| count += 1 if yield element}
+        else
+            puts "Appropriate block not provided"
+        end
+        count
+    end
+
+    def my_map
+        if block_given?
+            result = []
+            self.my_each {|element| result << (yield element)}
+        else
+            puts "Appropriate block not provided"
+        end
+        result    
+    end
+
 end
 
 
