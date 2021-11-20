@@ -85,6 +85,16 @@ module Enumerable
         result    
     end
 
+    def my_inject()
+        if block_given?
+            result = 0
+            self.my_each {|element| result = (yield result, element) }
+        else
+            puts "Appropriate block not provided"
+        end
+        result
+    end
+
 end
 
 
