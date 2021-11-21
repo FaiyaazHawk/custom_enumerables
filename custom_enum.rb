@@ -75,25 +75,33 @@ module Enumerable
         count
     end
 
-    def my_map
+    def my_map (&proc)
         if block_given?
             result = []
-            self.my_each {|element| result << (yield element)}
+            self.my_each {|element| result << yield(element)}
+        elsif
+            result = []
+            self.my_each {|element| result << proc.call(element)}
         else
             puts "Appropriate block not provided"
         end
         result    
     end
 
-    def my_inject()
+    def my_inject(start_value = 0)
         if block_given?
-            result = 0
-            self.my_each {|element| result = (yield result, element) }
+            result = start_value
+            self.my_each {|element| result = (yield result, element)}
         else
             puts "Appropriate block not provided"
         end
         result
     end
+
+    def multiply_els(array)
+        array.my_inject(1){|total, element| total * element}
+    end
+
 
 end
 

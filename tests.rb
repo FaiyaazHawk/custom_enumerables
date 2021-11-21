@@ -71,6 +71,8 @@ puts ""
 
 puts "inject vs my_inject"
 puts "inject"
-p numbers.inject {|sum,num| sum + num}
+p numbers.inject() {|sum,num| sum + num}
 puts "my_inject"
-p numbers.my_inject {|sum,num| sum + num}
+p numbers.my_inject() {|sum,num| sum + num}
+p multiply_els(numbers)
+
