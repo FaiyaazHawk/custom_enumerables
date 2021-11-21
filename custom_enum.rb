@@ -76,12 +76,12 @@ module Enumerable
     end
 
     def my_map (&proc)
-        if block_given?
-            result = []
-            self.my_each {|element| result << yield(element)}
-        elsif
+        if proc
             result = []
             self.my_each {|element| result << proc.call(element)}
+        elsif block_given?
+            result = []
+            self.my_each {|element| result << yield(element)}
         else
             puts "Appropriate block not provided"
         end
